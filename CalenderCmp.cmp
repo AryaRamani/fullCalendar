@@ -1,0 +1,30 @@
+<aura:component controller="CalenderClass" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <ltng:require styles="{!$Resource.Calender     + '/fullcalendar390/fullcalendar.css'}"
+                  scripts="{!join(',',
+                           $Resource.Calender  + '/fullcalendar390/lib/jquery.min.js',
+                           $Resource.Calender  + '/fullcalendar390/lib/moment.min.js',
+                           $Resource.Calender  + '/fullcalendar390/fullcalendar.js'
+                           )}"
+                  afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+    
+    <ltng:require styles="/resource/calender/fullcalendar390/fullcalendar.css"/>
+    
+    <aura:attribute name='Objectlist' type='Object[]'/>
+    <aura:attribute name="buttonstate" type="Boolean" default="false"/>
+    
+     <lightning:buttonStateful
+        labelWhenOff="List View"
+        labelWhenOn="Grid View"
+        
+        state="{!v.buttonstate}"
+                               onclick="{!c.handleClick }"/>
+     
+        <div id="calendar" class="slds-card">
+      
+
+    </div>
+    <div id="listcalendar" class="slds-card"/>
+
+     
+</aura:component>
