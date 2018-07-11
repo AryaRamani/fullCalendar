@@ -38,7 +38,7 @@
 
   },
             eventClick: function(event, jsEvent, view) {
-             console.log(event.id);
+           
               var editRecordEvent = $A.get("e.force:editRecord");
               editRecordEvent.setParams({
               "recordId": event.id
@@ -46,12 +46,11 @@
            editRecordEvent.fire();
           },
             dayClick :function(date, jsEvent, view) {
-                console.log(date.format());
+              
                 var datelist = date.format().toString().split('-');
-                console.log(datelist[0]);
-                console.log(parseInt(datelist[1])-1);
+             
               var datetime = new Date(datelist[0],parseInt(datelist[1])-1,parseInt(datelist[2])+1,0,0,0,0);
-                console.log(datetime);
+            
              var createRecordEvent = $A.get("e.force:createRecord");
     createRecordEvent.setParams({
         "entityApiName": "Event",
@@ -82,7 +81,7 @@
                 'id':events[i].Id
             });
         }
-        console.log('josnDataArray'+josnDataArray);
+      
         return josnDataArray;
     },
      
@@ -93,7 +92,7 @@
             var state = response.getState();
             if (state === "SUCCESS") {
                 var data= response.getReturnValue();
-                console.log(JSON.stringify(data));
+               
                  var josnArr = this.formatFullCalendarData(component,response.getReturnValue());
                 this.loadDataToCalendar(component,josnArr);
                 component.set("v.Objectlist",josnArr);
@@ -109,14 +108,14 @@
     
     editEvent : function(component,eventid,eventdate){
          var action=component.get("c.updateEvent");
-        console.log(eventdate);
+
          action.setParams({ eventid : eventid ,
                            eventdate : eventdate});
 
          action.setCallback(this, function (response) {
             var state = response.getState();
             if (state === "SUCCESS") {
-               console.log('updated');
+            
            
             } else if (state === "ERROR") {
                                  
